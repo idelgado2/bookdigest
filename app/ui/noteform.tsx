@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "./button";
+import { submitQuotes } from "../lib/actions";
 
 export default function Form() {
   const [inputs, setInputs] = useState([
@@ -27,7 +28,7 @@ export default function Form() {
   };
 
   return (
-    <form>
+    <form action={submitQuotes}>
       {inputs.map((input, index) => (
         <div key={input.id}>
           <div className="m-4">
@@ -60,7 +61,10 @@ export default function Form() {
       >
         Add Another Quote
       </Button>
-      <Button className="mt-5 delay-150 ease-in-out hover:-translate-y-1 hover:scale-110">
+      <Button
+        type="submit"
+        className="mt-5 delay-150 ease-in-out hover:-translate-y-1 hover:scale-110"
+      >
         Start Organization
       </Button>
     </form>

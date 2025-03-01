@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Button } from "./button";
-import { submitQuotes } from "../lib/actions";
 
-export default function Form() {
+export default function Form({ saveQuotesToParent }: any) {
   const [inputs, setInputs] = useState([
     { id: crypto.randomUUID(), value: "" },
   ]);
@@ -27,8 +26,13 @@ export default function Form() {
     setInputs(newInputs);
   };
 
+  const triggerCallBack = (event: any) => {
+    event.preventDefault();
+    saveQuotesToParent(inputs);
+  };
+
   return (
-    <form action={submitQuotes}>
+    <form onSubmit={triggerCallBack}>
       {inputs.map((input, index) => (
         <div key={input.id}>
           <div className="m-4">
@@ -42,31 +46,28 @@ export default function Form() {
               value={input.value}
               placeholder="To be, or not to be, that is the question"
               onChange={(e) => handleInputChange(e, input.id)}
-              className="w-1/2 text-black pl-2"
+              className="w-1/2 text-black pl-2 border border-black m-2"
             />
-            <Button
+            <button
               type="button"
-              className="delay-150 ease-in-out hover:-translate-y-1 hover:scale-110"
+              className="border border-black p-2"
               onClick={() => handleRemoveInput(input.id)}
             >
               Remove
-            </Button>
+            </button>
           </div>
         </div>
       ))}
-      <Button
+      <button
         type="button"
-        className="delay-150 ease-in-out hover:-translate-y-1 hover:scale-110"
+        className="border border-black p-2 m-2"
         onClick={handleAddInput}
       >
         Add Another Quote
-      </Button>
-      <Button
-        type="submit"
-        className="mt-5 delay-150 ease-in-out hover:-translate-y-1 hover:scale-110"
-      >
+      </button>
+      <button type="submit" className=" border border-black p-2 m-2">
         Start Organization
-      </Button>
+      </button>
     </form>
   );
 }

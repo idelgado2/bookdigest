@@ -9,7 +9,11 @@ export default function Page() {
   const [newTheme, setNewTheme] = useState("");
 
   const saveQuotes = (formData: any) => {
-    setData(formData);
+    setData(
+      formData.filter((quote: any) => {
+        return quote.value !== "";
+      })
+    );
   };
 
   const handleUpdateQuoteTheme = (id: number, newTheme: string) => {

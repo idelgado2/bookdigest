@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function WizardContainer({ quote, updateQuoteTheme }: any) {
+export default function WizardSection({ quote, updateQuoteTheme }: any) {
   const [options, setOptions] = useState(["Option 1", "Option 2"]);
   const [selectedValue, setSelectedValue] = useState("");
   const [newTheme, setNewTheme] = useState("");

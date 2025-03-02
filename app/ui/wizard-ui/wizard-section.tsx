@@ -4,7 +4,6 @@ export default function WizardSection({
   quote,
   themes,
   newTheme,
-  selectedTheme,
   handleSelctedTheme,
   handleNewThemeOption,
   handleAddTheme,
@@ -31,8 +30,8 @@ export default function WizardSection({
           className="w-1/2 text-black pl-2 border border-black m-2"
         />
         <select
-          value={selectedTheme}
-          onChange={handleSelctedTheme}
+          value={quote.theme}
+          onChange={(e) => handleSelctedTheme(quote.id, e.target.value)}
           className="text-black m-4"
         >
           <option value="" disabled>
@@ -52,7 +51,7 @@ export default function WizardSection({
           placeholder="new theme option"
           className="text-black m-4"
         />
-        <button onClick={handleAddTheme}>Add Option</button>
+        <button onClick={() => handleAddTheme(quote.id)}>Add Option</button>
       </div>
     </>
   );

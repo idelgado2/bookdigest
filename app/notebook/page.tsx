@@ -6,7 +6,6 @@ import WizardContainer from "../ui/wizard-ui/wizard-container";
 export default function Page() {
   const [data, setData] = useState([]);
   const [themes, setThemes] = useState(["Option 1", "Option 2"]);
-  const [selectedTheme, setSelectedTheme] = useState("");
   const [newTheme, setNewTheme] = useState("");
 
   const saveQuotes = (formData: any) => {
@@ -25,18 +24,34 @@ export default function Page() {
     });
   };
 
-  const handleSelctedTheme = (event: any) => {
-    setSelectedTheme(event.target.value);
+  const handleSelctedTheme = (id: number, newTheme: string) => {
+    setData((prevData: any) => {
+      return prevData.map((quote: any) => {
+        if (quote.id === id) {
+          return { ...quote, theme: newTheme };
+        } else {
+          return quote;
+        }
+      });
+    });
   };
 
   const handleNewThemeOption = (event: any) => {
     setNewTheme(event.target.value);
   };
 
-  const handleAddTheme = () => {
+  const handleAddTheme = (id: number) => {
     if (newTheme.trim() !== "") {
       setThemes([...themes, newTheme]);
-      setSelectedTheme(newTheme);
+      setData((prevData: any) => {
+        return prevData.map((quote: any) => {
+          if (quote.id === id) {
+            return { ...quote, theme: newTheme };
+          } else {
+            return quote;
+          }
+        });
+      });
       setNewTheme("");
     }
   };
@@ -50,14 +65,12 @@ export default function Page() {
           quotes={data}
           themes={themes}
           newTheme={newTheme}
-          selectedTheme={selectedTheme}
           handleSelctedTheme={handleSelctedTheme}
           handleNewThemeOption={handleNewThemeOption}
           handleAddTheme={handleAddTheme}
           handleUpdateQuoteTheme={handleUpdateQuoteTheme}
         />
       )}
-      {selectedTheme && <p>You selected: {selectedTheme}</p>}
     </main>
   );
 }

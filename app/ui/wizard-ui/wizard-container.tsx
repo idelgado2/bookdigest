@@ -5,7 +5,6 @@ export default function WizardContainer({
   quotes,
   themes,
   newTheme,
-  selectedTheme,
   handleSelctedTheme,
   handleNewThemeOption,
   handleAddTheme,
@@ -21,11 +20,10 @@ export default function WizardContainer({
             quote={item}
             themes={themes}
             newTheme={newTheme}
-            selectedTheme={selectedTheme}
-            handleUpdateQuoteTheme={handleUpdateQuoteTheme}
-            handleNewThemeOption={handleNewThemeOption}
             handleSelctedTheme={handleSelctedTheme}
+            handleNewThemeOption={handleNewThemeOption}
             handleAddTheme={handleAddTheme}
+            handleUpdateQuoteTheme={handleUpdateQuoteTheme}
           />
         ))}
       </Wizard>

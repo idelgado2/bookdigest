@@ -1,26 +1,15 @@
 import { useState } from "react";
 
-export default function WizardSection({ quote, updateQuoteTheme }: any) {
-  const [options, setOptions] = useState(["Option 1", "Option 2"]);
-  const [selectedValue, setSelectedValue] = useState("");
-  const [newTheme, setNewTheme] = useState("");
-
-  const handleSelctedValue = (event: any) => {
-    setSelectedValue(event.target.value);
-  };
-
-  const handleNewThemeOption = (event: any) => {
-    setNewTheme(event.target.value);
-  };
-
-  const handleAddTheme = () => {
-    if (newTheme.trim() !== "") {
-      setOptions([...options, newTheme]);
-      setSelectedValue(newTheme);
-      setNewTheme("");
-    }
-  };
-
+export default function WizardSection({
+  quote,
+  themes,
+  newTheme,
+  selectedTheme,
+  handleSelctedTheme,
+  handleNewThemeOption,
+  handleAddTheme,
+  handleUpdateQuoteTheme,
+}: any) {
   return (
     <>
       <div>
@@ -38,18 +27,18 @@ export default function WizardSection({ quote, updateQuoteTheme }: any) {
           type="text"
           value={quote.theme}
           placeholder="assigne theme"
-          onChange={(e) => updateQuoteTheme(quote.id, e.target.value)}
+          onChange={(e) => handleUpdateQuoteTheme(quote.id, e.target.value)}
           className="w-1/2 text-black pl-2 border border-black m-2"
         />
         <select
-          value={selectedValue}
-          onChange={handleSelctedValue}
+          value={selectedTheme}
+          onChange={handleSelctedTheme}
           className="text-black m-4"
         >
           <option value="" disabled>
             Select a Theme
           </option>
-          {options.map((theme, index) => (
+          {themes.map((theme: any, index: any) => (
             <option key={index} value={theme}>
               {theme}
             </option>

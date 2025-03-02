@@ -3,7 +3,7 @@ import { Button } from "./button";
 
 export default function Form({ saveQuotesToParent }: any) {
   const [inputs, setInputs] = useState([
-    { id: crypto.randomUUID(), value: "" },
+    { id: crypto.randomUUID(), value: "", theme: "" },
   ]);
 
   const handleInputChange = (e: any, id: string) => {
@@ -17,7 +17,7 @@ export default function Form({ saveQuotesToParent }: any) {
   };
 
   const handleAddInput = () => {
-    const newInput = { id: crypto.randomUUID(), value: "" };
+    const newInput = { id: crypto.randomUUID(), value: "", theme: "" };
     setInputs([...inputs, newInput]);
   };
 

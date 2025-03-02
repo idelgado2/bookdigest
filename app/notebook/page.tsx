@@ -2,11 +2,13 @@
 import { useState } from "react";
 import Form from "../ui/noteform";
 import WizardContainer from "../ui/wizard-ui/wizard-container";
+import Review from "../ui/review";
 
 export default function Page() {
   const [data, setData] = useState([]);
   const [themes, setThemes] = useState(["Option 1", "Option 2"]);
   const [newTheme, setNewTheme] = useState("");
+  const [finalizeQuotes, setFinializeQuotes] = useState(false);
 
   const saveQuotes = (formData: any) => {
     setData(
@@ -68,15 +70,21 @@ export default function Page() {
     );
   };
 
+  const handleFinializeQuotes = () => {
+    setFinializeQuotes(true);
+  };
+
   return (
     <main>
       <h3>Main Page</h3>
       {data.length === 0 && <Form saveQuotesToParent={saveQuotes} />}
-      {data.length !== 0 && (
+      {data.length !== 0 && !finalizeQuotes && (
         <WizardContainer
           quotes={data}
           themes={themes}
           newTheme={newTheme}
+          handleFinializeQuotes={handleFinializeQuotes}
+          finalizeQuotes={finalizeQuotes}
           handleSelctedTheme={handleSelctedTheme}
           handleNewThemeOption={handleNewThemeOption}
           handleAddTheme={handleAddTheme}
@@ -84,6 +92,7 @@ export default function Page() {
           handleThemeDelete={handleThemeDelete}
         />
       )}
+      {data.length !== 0 && finalizeQuotes && <Review quotes={data} />}
     </main>
   );
 }

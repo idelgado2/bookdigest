@@ -5,6 +5,7 @@ export default function WizardContainer({
   quotes,
   themes,
   newTheme,
+  handleFinializeQuotes,
   handleSelctedTheme,
   handleNewThemeOption,
   handleAddTheme,
@@ -14,7 +15,7 @@ export default function WizardContainer({
   return (
     <>
       <p className="text-center p-2">this is the wizard</p>
-      <Wizard>
+      <Wizard handleFinializeQuotes={handleFinializeQuotes}>
         {quotes.map((item: any) => (
           <WizardSection
             key={item.id}

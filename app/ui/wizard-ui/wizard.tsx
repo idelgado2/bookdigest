@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Wizard({ children }: any) {
+export default function Wizard({ children, handleFinializeQuotes }: any) {
   const [activePageIndex, setActivePageIndex] = React.useState(0);
   const pages = React.Children.toArray(children);
   const currentPage = pages[activePageIndex];
@@ -15,22 +15,21 @@ export default function Wizard({ children }: any) {
 
   const ButtonPrev = () =>
     activePageIndex > 0 ? (
-      <button
-        type="button"
-        onClick={goPrevPage}
-        className="wizard__buttons-left"
-      >
+      <button type="button" onClick={goPrevPage}>
         back
       </button>
     ) : null;
   const ButtonNext = () =>
     activePageIndex < pages.length - 1 ? (
-      <button
-        type="button"
-        onClick={goNextPage}
-        className="wizard__buttons-right"
-      >
+      <button type="button" onClick={goNextPage}>
         Next
+      </button>
+    ) : null;
+
+  const ButtonFinish = () =>
+    activePageIndex === pages.length - 1 ? (
+      <button type="button" onClick={handleFinializeQuotes}>
+        Finish
       </button>
     ) : null;
 
@@ -40,6 +39,7 @@ export default function Wizard({ children }: any) {
       <div className="wizard__buttons">
         <ButtonPrev />
         <ButtonNext />
+        <ButtonFinish />
       </div>
     </div>
   );

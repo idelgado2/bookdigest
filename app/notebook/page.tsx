@@ -56,6 +56,14 @@ export default function Page() {
     }
   };
 
+  const handleThemeDelete = (themeToRemove: any) => {
+    setThemes(
+      themes.filter((theme: any) => {
+        return theme !== themeToRemove;
+      })
+    );
+  };
+
   return (
     <main>
       <h3>Main Page</h3>
@@ -69,6 +77,7 @@ export default function Page() {
           handleNewThemeOption={handleNewThemeOption}
           handleAddTheme={handleAddTheme}
           handleUpdateQuoteTheme={handleUpdateQuoteTheme}
+          handleThemeDelete={handleThemeDelete}
         />
       )}
     </main>

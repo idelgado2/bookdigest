@@ -9,6 +9,7 @@ export default function WizardContainer({
   handleNewThemeOption,
   handleAddTheme,
   handleUpdateQuoteTheme,
+  handleThemeDelete,
 }: any) {
   return (
     <>
@@ -24,6 +25,7 @@ export default function WizardContainer({
             handleNewThemeOption={handleNewThemeOption}
             handleAddTheme={handleAddTheme}
             handleUpdateQuoteTheme={handleUpdateQuoteTheme}
+            handleThemeDelete={handleThemeDelete}
           />
         ))}
       </Wizard>

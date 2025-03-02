@@ -8,6 +8,7 @@ export default function WizardSection({
   handleNewThemeOption,
   handleAddTheme,
   handleUpdateQuoteTheme,
+  handleThemeDelete,
 }: any) {
   return (
     <>
@@ -52,6 +53,14 @@ export default function WizardSection({
           className="text-black m-4"
         />
         <button onClick={() => handleAddTheme(quote.id)}>Add Option</button>
+        <div>
+          {themes.map((theme: any) => (
+            <div key={theme}>
+              {theme}
+              <button onClick={() => handleThemeDelete(theme)}>Delete</button>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

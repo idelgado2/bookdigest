@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button } from "./button";
 
 export default function Form({ saveQuotesToParent }: any) {
   const [inputs, setInputs] = useState([
@@ -33,7 +32,7 @@ export default function Form({ saveQuotesToParent }: any) {
 
   return (
     <form onSubmit={triggerCallBack}>
-      {inputs.map((input, index) => (
+      {inputs.map((input) => (
         <div key={input.id}>
           <div className="m-4">
             <label htmlFor="quote" className="mb-2 block text-lg font-medium">

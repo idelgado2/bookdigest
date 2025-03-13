@@ -3,12 +3,10 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const link = [{ name: "StartNotes", href: "/notebook" }];
 
 export default function Home() {
-  const pathname = usePathname();
   return (
     <>
       <div className="grid grid-rows-[20px_1fr_20px] gap-16 min-h-screen sm:p-20 p-8 pb-20 items-center justify-items-center font-[family-name:var(--font-geist-sans)]">

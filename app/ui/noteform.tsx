@@ -32,13 +32,22 @@ export default function Form({ saveQuotesToParent }: any) {
   };
 
   return (
-    <form onSubmit={triggerCallBack}>
+    <form
+      onSubmit={triggerCallBack}
+      className="bg-white rounded-2xl p-6 space-y-6"
+    >
       {inputs.map((input) => (
-        <div key={input.id}>
-          <div className="m-4">
-            <label htmlFor="quote" className="mb-2 block text-lg font-medium">
-              Paste Book Quotes
-            </label>
+        <div
+          key={input.id}
+          className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-200"
+        >
+          <label
+            htmlFor="quote"
+            className="block text-lg font-semibold text-gray-700 mb-2"
+          >
+            Paste Book Quote
+          </label>
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
             <input
               id="quote"
               name="quote"
@@ -46,20 +55,23 @@ export default function Form({ saveQuotesToParent }: any) {
               value={input.value}
               placeholder="To be, or not to be, that is the question"
               onChange={(e) => handleInputChange(e, input.id)}
-              className="w-1/2 text-black pl-2 border border-black m-2"
+              className="w-full md:w-2/3 text-gray-900 border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <button
               type="button"
-              className="border border-black p-2"
               onClick={() => handleRemoveInput(input.id)}
+              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
             >
               Remove
             </button>
           </div>
         </div>
       ))}
-      <ButtonNormal onClick={handleAddInput}> Add Another Quote</ButtonNormal>
-      <ButtonNormal type="submit">Start Organization</ButtonNormal>
+
+      <div className="flex flex-col md:flex-row gap-4 justify-end">
+        <ButtonNormal onClick={handleAddInput}>Add Another Quote</ButtonNormal>
+        <ButtonNormal type="submit">Start Organization</ButtonNormal>
+      </div>
     </form>
   );
 }

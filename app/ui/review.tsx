@@ -34,18 +34,35 @@ export default function Review({ quotes }: any) {
 
   return (
     <>
-      <p>TIME TO FINIALIZE QUOTES! FROM REVIEW COMPONENT!</p>
-      {quotes.map((quote: any) => (
-        <div key={quote.id} className="m-4">
-          <p>quote: {quote.value}</p>
-          <p>quote theme: {quote.theme}</p>
-        </div>
-      ))}
-      <ButtonNormal onClick={handleExport}>Export</ButtonNormal>
+      <div className="bg-white rounded-2xl p-6 mb-6">
+        <p className="text-2xl font-bold text-indigo-700 mb-6">
+          Time to Finalize Quotes!
+        </p>
 
-      <Link key={link[0].name} href={link[0].href}>
-        <ButtonNormal>Home</ButtonNormal>
-      </Link>
+        <div className="space-y-4">
+          {quotes.map((quote: any) => (
+            <div
+              key={quote.id}
+              className="border border-gray-200 rounded-lg p-4 shadow-sm bg-gray-50"
+            >
+              <p className="text-lg text-gray-800">
+                <span className="font-semibold">Quote:</span> {quote.value}
+              </p>
+              <p className="text-md text-gray-600">
+                <span className="font-semibold">Theme:</span> {quote.theme}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-end items-center gap-4 mt-6">
+          <ButtonNormal onClick={handleExport}>Export</ButtonNormal>
+
+          <Link key={link[0].name} href={link[0].href}>
+            <ButtonNormal>Home</ButtonNormal>
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

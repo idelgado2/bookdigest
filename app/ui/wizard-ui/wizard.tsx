@@ -29,12 +29,20 @@ export default function Wizard({ children, handleFinializeQuotes }: any) {
     ) : null;
 
   return (
-    <div className="wizard">
-      <div className="wizard__content">{currentPage}</div>
-      <div className="wizard__buttons">
-        <ButtonPrev />
-        <ButtonNext />
-        <ButtonFinish />
+    <div className="wizard bg-white rounded-xl p-6">
+      <div className="wizard__content mb-6">{currentPage}</div>
+
+      <div className="wizard__buttons flex items-center justify-between">
+        {/* Back button on the left */}
+        <div>
+          <ButtonPrev />
+        </div>
+
+        {/* Next and Finish buttons on the right */}
+        <div className="flex gap-4">
+          <ButtonNext />
+          <ButtonFinish />
+        </div>
       </div>
     </div>
   );

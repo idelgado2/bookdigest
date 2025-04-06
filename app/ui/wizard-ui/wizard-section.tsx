@@ -12,7 +12,7 @@ export default function WizardSection({
 }: any) {
   return (
     <>
-      <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-md p-6 gap-8 mb-6">
+      <div className="flex flex-col md:flex-row bg-white rounded-2xl p-6 gap-8 mb-6">
         {/* Left side: Quote content */}
         <div className="flex-1">
           <h1 className="text-2xl font-semibold text-gray-800 mb-2">

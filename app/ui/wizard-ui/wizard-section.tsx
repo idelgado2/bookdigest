@@ -1,4 +1,7 @@
+import { useState } from "react";
 import ButtonNormal from "../button-normal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function WizardSection({
   quote,
@@ -7,9 +10,12 @@ export default function WizardSection({
   handleSelctedTheme,
   handleNewThemeOption,
   handleAddTheme,
-  handleUpdateQuoteTheme,
   handleThemeDelete,
 }: any) {
+  const [isVisible, setIsVisible] = useState(false);
+  const toggleDiv = () => {
+    setIsVisible((prev) => !prev);
+  };
   return (
     <>
       <div className="flex flex-col md:flex-row bg-white rounded-2xl p-6 gap-8 mb-6">
@@ -44,23 +50,28 @@ export default function WizardSection({
               </option>
             ))}
           </select>
+          <ButtonNormal className="mb-4" onClick={toggleDiv}>
+            {isVisible ? "Cancel" : "Add New Theme"}
+          </ButtonNormal>
+          {isVisible && (
+            <div className="newThemeForm">
+              <input
+                name="newTheme"
+                type="text"
+                value={newTheme}
+                onChange={handleNewThemeOption}
+                placeholder="New theme option"
+                className="w-full text-gray-900 border border-gray-300 rounded-lg px-4 py-2 mb-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
 
-          <input
-            name="newTheme"
-            type="text"
-            value={newTheme}
-            onChange={handleNewThemeOption}
-            placeholder="New theme option"
-            className="w-full text-gray-900 border border-gray-300 rounded-lg px-4 py-2 mb-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-
-          <button
-            onClick={() => handleAddTheme(quote.id)}
-            className="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-200 mb-4"
-          >
-            Add Option
-          </button>
-
+              <ButtonNormal
+                className="mb-4"
+                onClick={() => handleAddTheme(quote.id)}
+              >
+                Save Theme
+              </ButtonNormal>
+            </div>
+          )}
           <div className="space-y-2">
             {themes.map((theme: any) => (
               <div
@@ -68,9 +79,10 @@ export default function WizardSection({
                 className="flex items-center justify-between bg-white border border-gray-200 rounded-md px-4 py-2"
               >
                 <span className="text-gray-700">{theme}</span>
-                <ButtonNormal onClick={() => handleThemeDelete(theme)}>
-                  Delete
-                </ButtonNormal>
+                <FontAwesomeIcon
+                  onClick={() => handleThemeDelete(theme)}
+                  icon={faTrash}
+                />
               </div>
             ))}
           </div>

@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "./ui/button";
 import Link from "next/link";
 import ButtonNormal from "./ui/button-normal";
 
 const link = [{ name: "StartNotes", href: "/notebook" }];
-
 export default function Home() {
   return (
     <>

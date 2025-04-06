@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonNormal from "./../button-normal";
 
 export default function Wizard({ children, handleFinializeQuotes }: any) {
   const [activePageIndex, setActivePageIndex] = React.useState(0);
@@ -15,22 +16,16 @@ export default function Wizard({ children, handleFinializeQuotes }: any) {
 
   const ButtonPrev = () =>
     activePageIndex > 0 ? (
-      <button type="button" onClick={goPrevPage}>
-        back
-      </button>
+      <ButtonNormal onClick={goPrevPage}>back</ButtonNormal>
     ) : null;
   const ButtonNext = () =>
     activePageIndex < pages.length - 1 ? (
-      <button type="button" onClick={goNextPage}>
-        Next
-      </button>
+      <ButtonNormal onClick={goNextPage}>Next</ButtonNormal>
     ) : null;
 
   const ButtonFinish = () =>
     activePageIndex === pages.length - 1 ? (
-      <button type="button" onClick={handleFinializeQuotes}>
-        Finish
-      </button>
+      <ButtonNormal onClick={handleFinializeQuotes}>Finish</ButtonNormal>
     ) : null;
 
   return (

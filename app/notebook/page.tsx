@@ -75,24 +75,41 @@ export default function Page() {
   };
 
   return (
-    <main>
-      <h3>Main Page</h3>
-      {data.length === 0 && <Form saveQuotesToParent={saveQuotes} />}
-      {data.length !== 0 && !finalizeQuotes && (
-        <WizardContainer
-          quotes={data}
-          themes={themes}
-          newTheme={newTheme}
-          handleFinializeQuotes={handleFinializeQuotes}
-          finalizeQuotes={finalizeQuotes}
-          handleSelctedTheme={handleSelctedTheme}
-          handleNewThemeOption={handleNewThemeOption}
-          handleAddTheme={handleAddTheme}
-          handleUpdateQuoteTheme={handleUpdateQuoteTheme}
-          handleThemeDelete={handleThemeDelete}
-        />
-      )}
-      {data.length !== 0 && finalizeQuotes && <Review quotes={data} />}
+    <main className="min-h-screen bg-gray-50 px-6 py-10">
+      <div className="max-w-4xl mx-auto">
+        <h3 className="text-3xl font-semibold text-gray-800 mb-8 border-b pb-2">
+          Log Your Notes!
+        </h3>
+
+        {data.length === 0 && (
+          <div className="bg-white p-6 rounded-2xl shadow-md">
+            <Form saveQuotesToParent={saveQuotes} />
+          </div>
+        )}
+
+        {data.length !== 0 && !finalizeQuotes && (
+          <div className="bg-white p-6 rounded-2xl shadow-md">
+            <WizardContainer
+              quotes={data}
+              themes={themes}
+              newTheme={newTheme}
+              handleFinializeQuotes={handleFinializeQuotes}
+              finalizeQuotes={finalizeQuotes}
+              handleSelctedTheme={handleSelctedTheme}
+              handleNewThemeOption={handleNewThemeOption}
+              handleAddTheme={handleAddTheme}
+              handleUpdateQuoteTheme={handleUpdateQuoteTheme}
+              handleThemeDelete={handleThemeDelete}
+            />
+          </div>
+        )}
+
+        {data.length !== 0 && finalizeQuotes && (
+          <div className="bg-white p-6 rounded-2xl shadow-md">
+            <Review quotes={data} />
+          </div>
+        )}
+      </div>
     </main>
   );
 }

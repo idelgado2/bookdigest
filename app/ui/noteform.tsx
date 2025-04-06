@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ButtonNormal from "./button-normal";
 
 export default function Form({ saveQuotesToParent }: any) {
   const [inputs, setInputs] = useState([
@@ -57,16 +58,8 @@ export default function Form({ saveQuotesToParent }: any) {
           </div>
         </div>
       ))}
-      <button
-        type="button"
-        className="border border-black p-2 m-2"
-        onClick={handleAddInput}
-      >
-        Add Another Quote
-      </button>
-      <button type="submit" className=" border border-black p-2 m-2">
-        Start Organization
-      </button>
+      <ButtonNormal onClick={handleAddInput}> Add Another Quote</ButtonNormal>
+      <ButtonNormal type="submit">Start Organization</ButtonNormal>
     </form>
   );
 }

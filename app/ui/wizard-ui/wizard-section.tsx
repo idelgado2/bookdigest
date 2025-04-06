@@ -1,3 +1,5 @@
+import ButtonNormal from "../button-normal";
+
 export default function WizardSection({
   quote,
   themes,
@@ -55,7 +57,9 @@ export default function WizardSection({
           {themes.map((theme: any) => (
             <div key={theme}>
               {theme}
-              <button onClick={() => handleThemeDelete(theme)}>Delete</button>
+              <ButtonNormal onClick={() => handleThemeDelete(theme)}>
+                Delete
+              </ButtonNormal>
             </div>
           ))}
         </div>

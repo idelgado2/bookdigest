@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import ButtonNormal from "./button-normal";
 
 const link = [{ name: "Home", href: "/" }];
 
@@ -40,18 +41,10 @@ export default function Review({ quotes }: any) {
           <p>quote theme: {quote.theme}</p>
         </div>
       ))}
-      <button
-        type="button"
-        className="border border-black p-2 m-2"
-        onClick={handleExport}
-      >
-        Export
-      </button>
+      <ButtonNormal onClick={handleExport}>Export</ButtonNormal>
 
       <Link key={link[0].name} href={link[0].href}>
-        <button type="button" className="border border-black p-2 m-2">
-          Home
-        </button>
+        <ButtonNormal>Home</ButtonNormal>
       </Link>
     </>
   );

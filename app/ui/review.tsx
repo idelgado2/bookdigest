@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import ButtonNormal from "./button-normal";
+import ButtonSecondary from "./button-normal-secondary";
 
 const link = [{ name: "Home", href: "/" }];
 
@@ -56,7 +57,7 @@ export default function Review({ quotes }: any) {
         </div>
 
         <div className="flex justify-end items-center gap-4 mt-6">
-          <ButtonNormal onClick={handleExport}>Export</ButtonNormal>
+          <ButtonSecondary onClick={handleExport}>Export</ButtonSecondary>
 
           <Link key={link[0].name} href={link[0].href}>
             <ButtonNormal>Home</ButtonNormal>

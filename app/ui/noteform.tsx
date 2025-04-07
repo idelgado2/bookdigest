@@ -2,6 +2,7 @@ import { useState } from "react";
 import ButtonNormal from "./button-normal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ButtonSecondary from "./button-normal-secondary";
 
 export default function Form({ saveQuotesToParent }: any) {
   const [inputs, setInputs] = useState([
@@ -65,7 +66,9 @@ export default function Form({ saveQuotesToParent }: any) {
       ))}
 
       <div className="flex flex-col md:flex-row gap-4 justify-end">
-        <ButtonNormal onClick={handleAddInput}>Add Another Quote</ButtonNormal>
+        <ButtonSecondary onClick={handleAddInput}>
+          Add Another Quote
+        </ButtonSecondary>
         <ButtonNormal type="submit">Start Organization</ButtonNormal>
       </div>
     </form>

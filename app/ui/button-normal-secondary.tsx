@@ -7,7 +7,7 @@ interface ButtonProps {
   className?: string;
 }
 
-const ButtonNormal: React.FC<ButtonProps> = ({
+const ButtonSecondary: React.FC<ButtonProps> = ({
   type = "button",
   onClick,
   children,
@@ -17,11 +17,11 @@ const ButtonNormal: React.FC<ButtonProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`px-6 py-2 bg-primary text-black font-semibold rounded-xl shadow-md hover:bg-primaryHover transition duration-200 ease-in-out ${className}`}
+      className={`px-6 py-2 bg-secondary text-white font-semibold rounded-xl shadow-md hover:bg-secondaryHover transition duration-200 ease-in-out ${className}`}
     >
       {children}
     </button>
   );
 };
 
-export default ButtonNormal;
+export default ButtonSecondary;

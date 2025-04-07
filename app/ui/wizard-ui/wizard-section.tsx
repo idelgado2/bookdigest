@@ -2,6 +2,7 @@ import { useState } from "react";
 import ButtonNormal from "../button-normal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ButtonSecondary from "../button-normal-secondary";
 
 export default function WizardSection({
   quote,
@@ -50,9 +51,9 @@ export default function WizardSection({
               </option>
             ))}
           </select>
-          <ButtonNormal className="mb-4" onClick={toggleDiv}>
+          <ButtonSecondary className="mb-4" onClick={toggleDiv}>
             {isVisible ? "Cancel" : "Add New Theme"}
-          </ButtonNormal>
+          </ButtonSecondary>
           {isVisible && (
             <div className="newThemeForm">
               <input
@@ -71,6 +72,14 @@ export default function WizardSection({
                 Save Theme
               </ButtonNormal>
             </div>
+          )}
+          {themes.length > 0 && (
+            <label
+              htmlFor={`theme-${quote.id}`}
+              className="block mb-2 text-md font-medium text-gray-700"
+            >
+              Available Themes:
+            </label>
           )}
           <div className="space-y-2">
             {themes.map((theme: any) => (

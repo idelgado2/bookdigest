@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ButtonNormal from "./ui/button-normal";
+import ButtonSecondary from "./ui/button-normal-secondary";
 
 const link = [{ name: "StartNotes", href: "/notebook" }];
 export default function Home() {
@@ -12,9 +13,7 @@ export default function Home() {
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <div className="flex gap-4 items-center flex-col sm:flex-row">
             <Link key={link[0].name} href={link[0].href}>
-              <ButtonNormal className="delay-150 ease-in-out hover:-translate-y-1 hover:scale-110">
-                Start Book Notes!
-              </ButtonNormal>
+              <ButtonNormal>Start Book Notes!</ButtonNormal>
             </Link>
           </div>
         </main>

@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonNormal from "./../button-normal";
+import ButtonSecondary from "../button-normal-secondary";
 
 export default function Wizard({ children, handleFinializeQuotes }: any) {
   const [activePageIndex, setActivePageIndex] = React.useState(0);
@@ -16,11 +17,11 @@ export default function Wizard({ children, handleFinializeQuotes }: any) {
 
   const ButtonPrev = () =>
     activePageIndex > 0 ? (
-      <ButtonNormal onClick={goPrevPage}>back</ButtonNormal>
+      <ButtonSecondary onClick={goPrevPage}>back</ButtonSecondary>
     ) : null;
   const ButtonNext = () =>
     activePageIndex < pages.length - 1 ? (
-      <ButtonNormal onClick={goNextPage}>Next</ButtonNormal>
+      <ButtonSecondary onClick={goNextPage}>Next</ButtonSecondary>
     ) : null;
 
   const ButtonFinish = () =>

@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import ButtonNormal from "./ui/button-normal";
-import ButtonSecondary from "./ui/button-normal-secondary";
 
 const link = [{ name: "StartNotes", href: "/notebook" }];
 export default function Home() {

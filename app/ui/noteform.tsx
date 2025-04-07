@@ -1,4 +1,8 @@
 import { useState } from "react";
+import ButtonNormal from "./button-normal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ButtonSecondary from "./button-normal-secondary";
 
 export default function Form({ saveQuotesToParent }: any) {
   const [inputs, setInputs] = useState([
@@ -31,13 +35,19 @@ export default function Form({ saveQuotesToParent }: any) {
   };
 
   return (
-    <form onSubmit={triggerCallBack}>
+    <form
+      onSubmit={triggerCallBack}
+      className="bg-white rounded-2xl p-6 space-y-6"
+    >
       {inputs.map((input) => (
-        <div key={input.id}>
-          <div className="m-4">
-            <label htmlFor="quote" className="mb-2 block text-lg font-medium">
-              Paste Book Quotes
-            </label>
+        <div key={input.id} className="p-4 rounded-lg border-gray-200">
+          <label
+            htmlFor="quote"
+            className="block text-lg font-semibold text-gray-700 mb-2"
+          >
+            Paste Book Quote
+          </label>
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
             <input
               id="quote"
               name="quote"
@@ -45,28 +55,22 @@ export default function Form({ saveQuotesToParent }: any) {
               value={input.value}
               placeholder="To be, or not to be, that is the question"
               onChange={(e) => handleInputChange(e, input.id)}
-              className="w-1/2 text-black pl-2 border border-black m-2"
+              className="w-full text-gray-900 border border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
-            <button
-              type="button"
-              className="border border-black p-2"
+            <FontAwesomeIcon
               onClick={() => handleRemoveInput(input.id)}
-            >
-              Remove
-            </button>
+              icon={faTrash}
+            />
           </div>
         </div>
       ))}
-      <button
-        type="button"
-        className="border border-black p-2 m-2"
-        onClick={handleAddInput}
-      >
-        Add Another Quote
-      </button>
-      <button type="submit" className=" border border-black p-2 m-2">
-        Start Organization
-      </button>
+
+      <div className="flex flex-col md:flex-row gap-4 justify-end">
+        <ButtonSecondary onClick={handleAddInput}>
+          Add Another Quote
+        </ButtonSecondary>
+        <ButtonNormal type="submit">Start Organization</ButtonNormal>
+      </div>
     </form>
   );
 }

@@ -14,7 +14,6 @@ export default function WizardContainer({
 }: any) {
   return (
     <>
-      <p className="text-center p-2">this is the wizard</p>
       <Wizard handleFinializeQuotes={handleFinializeQuotes}>
         {quotes.map((item: any) => (
           <WizardSection

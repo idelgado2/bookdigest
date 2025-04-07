@@ -1,4 +1,6 @@
 import React from "react";
+import ButtonNormal from "./../button-normal";
+import ButtonSecondary from "../button-normal-secondary";
 
 export default function Wizard({ children, handleFinializeQuotes }: any) {
   const [activePageIndex, setActivePageIndex] = React.useState(0);
@@ -15,31 +17,33 @@ export default function Wizard({ children, handleFinializeQuotes }: any) {
 
   const ButtonPrev = () =>
     activePageIndex > 0 ? (
-      <button type="button" onClick={goPrevPage}>
-        back
-      </button>
+      <ButtonSecondary onClick={goPrevPage}>back</ButtonSecondary>
     ) : null;
   const ButtonNext = () =>
     activePageIndex < pages.length - 1 ? (
-      <button type="button" onClick={goNextPage}>
-        Next
-      </button>
+      <ButtonSecondary onClick={goNextPage}>Next</ButtonSecondary>
     ) : null;
 
   const ButtonFinish = () =>
     activePageIndex === pages.length - 1 ? (
-      <button type="button" onClick={handleFinializeQuotes}>
-        Finish
-      </button>
+      <ButtonNormal onClick={handleFinializeQuotes}>Finish</ButtonNormal>
     ) : null;
 
   return (
-    <div className="wizard">
-      <div className="wizard__content">{currentPage}</div>
-      <div className="wizard__buttons">
-        <ButtonPrev />
-        <ButtonNext />
-        <ButtonFinish />
+    <div className="wizard bg-white rounded-xl p-6">
+      <div className="wizard__content mb-6">{currentPage}</div>
+
+      <div className="wizard__buttons flex items-center justify-between">
+        {/* Back button on the left */}
+        <div>
+          <ButtonPrev />
+        </div>
+
+        {/* Next and Finish buttons on the right */}
+        <div className="flex gap-4">
+          <ButtonNext />
+          <ButtonFinish />
+        </div>
       </div>
     </div>
   );

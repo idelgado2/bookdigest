@@ -6,7 +6,7 @@ import Review from "../ui/review";
 
 export default function Page() {
   const [data, setData] = useState([]);
-  const [themes, setThemes] = useState([]);
+  const [themes, setThemes] = useState([""]);
   const [newTheme, setNewTheme] = useState("");
   const [finalizeQuotes, setFinializeQuotes] = useState(false);
 
